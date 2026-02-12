@@ -1,12 +1,16 @@
 {
   "name": "claude-usage-widget",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Desktop widget for Claude.ai usage monitoring",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "start:debug": "cross-env DEBUG_AUTH=1 electron .",
+    "start:debug:dev": "cross-env DEBUG_AUTH=1 NODE_ENV=development electron .",
     "build": "electron-builder",
     "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
     "dev": "cross-env NODE_ENV=development electron ."
   },
   "keywords": [
@@ -15,7 +19,7 @@
     "widget",
     "electron"
   ],
-  "author": "Your Name",
+  "author": "Slavomir Durej",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0",
@@ -38,6 +42,34 @@
         "portable"
       ],
       "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "icon": "assets/icon.png",
+      "category": "public.app-category.utilities"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "assets/icon.png"
     },
     "portable": {
       "artifactName": "${productName}-${version}-portable.${ext}"
