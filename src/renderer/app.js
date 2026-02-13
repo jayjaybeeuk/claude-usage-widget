@@ -308,6 +308,13 @@ async function fetchUsageData() {
         };
         await window.electronAPI.saveUsageHistoryEntry(historyEntry);
 
+        // Update tray with latest stats
+        window.electronAPI.updateTrayUsage({
+            session: historyEntry.session,
+            weekly: historyEntry.weekly,
+            sonnet: historyEntry.sonnet
+        });
+
         // Refresh graph if visible
         if (isGraphVisible) {
             renderUsageChart();
