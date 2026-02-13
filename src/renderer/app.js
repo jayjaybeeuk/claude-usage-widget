@@ -73,7 +73,8 @@ const elements = {
     closeSettingsBtn: document.getElementById('closeSettingsBtn'),
     logoutBtn: document.getElementById('logoutBtn'),
     clearHistoryBtn: document.getElementById('clearHistoryBtn'),
-    coffeeBtn: document.getElementById('coffeeBtn')
+    coffeeBtn: document.getElementById('coffeeBtn'),
+    coffeeBtnAlt: document.getElementById('coffeeBtnAlt')
 };
 
 // Initialize
@@ -194,6 +195,10 @@ function setupEventListeners() {
 
     elements.coffeeBtn.addEventListener('click', () => {
         window.electronAPI.openExternal('https://paypal.me/SlavomirDurej?country.x=GB&locale.x=en_GB');
+    });
+
+    elements.coffeeBtnAlt.addEventListener('click', () => {
+        window.electronAPI.openExternal('https://paypal.me/JamesBolton?country.x=GB&locale.x=en_GB');
     });
 
     // Listen for refresh requests from tray
